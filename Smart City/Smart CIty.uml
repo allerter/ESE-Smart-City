@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Requirements="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/sysml/1.6/SysML/Requirements http://www.eclipse.org/papyrus/sysml/1.6/SysML#//requirements">
+  <uml:Model xmi:id="_lnFDQJHZEe60IZayPKr4aA" name="Smart CIty" visibility="protected">
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_lssjEJHZEe60IZayPKr4aA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_ltDvcJHZEe60IZayPKr4aA">
+      <importedPackage xmi:type="uml:Package" href="pathmap://SysML16_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_4_TcMJHZEe60IZayPKr4aA" name="Requirement13"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_9VECEJIGEe60IZayPKr4aA" name="Requirement14"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_M8YVMJIHEe60IZayPKr4aA" name="Requirement15"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ZvWRYJIHEe60IZayPKr4aA" name="Requirement16"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_djq3kJIHEe60IZayPKr4aA" name="Requirement17"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_kaNRkJIHEe60IZayPKr4aA" name="Requirement18"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_nR_XAJIHEe60IZayPKr4aA" name="Requirement19"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sG7FoJIHEe60IZayPKr4aA" name="Requirement20"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_6CGAAJIHEe60IZayPKr4aA" name="Requirement21"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="__sIxsJIHEe60IZayPKr4aA" name="Requirement22"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HTVzoJIIEe60IZayPKr4aA" name="Requirement23"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0UzwQJILEe60IZayPKr4aA" name="Requirement24"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_STqwsJIMEe60IZayPKr4aA" name="Requirement25"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_hoEH0JIMEe60IZayPKr4aA" name="Requirement26"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lpfeEJHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lpkWkJHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsiyEJHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsiyEZHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//activities"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Activities"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsnDgJHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsnqkJHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//allocations"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Allocations"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsoRoJHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsoRoZHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//blocks"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lspfwJHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lspfwZHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//constraintblocks"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ConstraintBlocks"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsqG0JHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsqG0ZHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsqG0pHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsqt4JHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//modelelements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsqt4ZHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsqt4pHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//portsandflows"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsrU8JHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsrU8ZHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#//requirements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML16_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Requirements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lsr8AJHZEe60IZayPKr4aA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lsr8AZHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <Requirements:Requirement xmi:id="_5AcEoJHZEe60IZayPKr4aA" base_NamedElement="_4_TcMJHZEe60IZayPKr4aA" id="0" base_Class="_4_TcMJHZEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_9VHFYJIGEe60IZayPKr4aA" base_NamedElement="_9VECEJIGEe60IZayPKr4aA" id="1" text="The system shall facilitate an infrastructure to provide a reliable communication between the vehicles and the system, enabling autonomous cars to share information about their current location, destination &amp; road conditions. " base_Class="_9VECEJIGEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_M8cmoJIHEe60IZayPKr4aA" base_NamedElement="_M8YVMJIHEe60IZayPKr4aA" id="2" text="The city will already have an appropriated infrastructure to facilitate the system, such as: &#xD;&#xA;Traffic lights, Sensors, such as: Cameras, Light sensors, Etc…, Infrastructure for wireless communication" base_Class="_M8YVMJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_ZvYtoJIHEe60IZayPKr4aA" base_NamedElement="_ZvWRYJIHEe60IZayPKr4aA" id="3" base_Class="_ZvWRYJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_djsFsJIHEe60IZayPKr4aA" base_NamedElement="_djq3kJIHEe60IZayPKr4aA" id="4" base_Class="_djq3kJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_kaN4oJIHEe60IZayPKr4aA" base_NamedElement="_kaNRkJIHEe60IZayPKr4aA" id="5" text="The system shall have security measures to protect itself from unauthorized access &amp; data breaches." base_Class="_kaNRkJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_nSDBYJIHEe60IZayPKr4aA" base_NamedElement="_nR_XAJIHEe60IZayPKr4aA" id="6" text="The system shall comply with the local data privacy compliance laws. " base_Class="_nR_XAJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_sG860JIHEe60IZayPKr4aA" base_NamedElement="_sG7FoJIHEe60IZayPKr4aA" id="7" text="The system shall be able to detect faults within itself and react accordingly. " base_Class="_sG7FoJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_6CMGoJIHEe60IZayPKr4aA" base_NamedElement="_6CGAAJIHEe60IZayPKr4aA" id="8" text="The system shall reduce the city's carbon footprint" base_Class="_6CGAAJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="__sLN8JIHEe60IZayPKr4aA" base_NamedElement="__sIxsJIHEe60IZayPKr4aA" id="9" text="The system should comply with the green initives set by the city, region, and the government." base_Class="__sIxsJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_HTY28JIIEe60IZayPKr4aA" base_NamedElement="_HTVzoJIIEe60IZayPKr4aA" id="10" base_Class="_HTVzoJIIEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_0U2MgJILEe60IZayPKr4aA" base_NamedElement="_0UzwQJILEe60IZayPKr4aA" id="11" text="The system should conserve energy where possible" base_Class="_0UzwQJILEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_STsl4JIMEe60IZayPKr4aA" base_NamedElement="_STqwsJIMEe60IZayPKr4aA" id="12" base_Class="_STqwsJIMEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_hoF9AJIMEe60IZayPKr4aA" base_NamedElement="_hoEH0JIMEe60IZayPKr4aA" id="13" text="The system shall provide means of real-time feedback from citizens for notifying issues such as potholes, traffick problems, etc." base_Class="_hoEH0JIMEe60IZayPKr4aA"/>
+</xmi:XMI>
