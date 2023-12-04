@@ -7,20 +7,29 @@
     <packageImport xmi:type="uml:PackageImport" xmi:id="_ltDvcJHZEe60IZayPKr4aA">
       <importedPackage xmi:type="uml:Package" href="pathmap://SysML16_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Class" xmi:id="_4_TcMJHZEe60IZayPKr4aA" name="Requirement13"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_9VECEJIGEe60IZayPKr4aA" name="Requirement14"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_M8YVMJIHEe60IZayPKr4aA" name="Requirement15"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_ZvWRYJIHEe60IZayPKr4aA" name="Requirement16"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_djq3kJIHEe60IZayPKr4aA" name="Requirement17"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_kaNRkJIHEe60IZayPKr4aA" name="Requirement18"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_nR_XAJIHEe60IZayPKr4aA" name="Requirement19"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_sG7FoJIHEe60IZayPKr4aA" name="Requirement20"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_6CGAAJIHEe60IZayPKr4aA" name="Requirement21"/>
     <packagedElement xmi:type="uml:Class" xmi:id="__sIxsJIHEe60IZayPKr4aA" name="Requirement22"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_HTVzoJIIEe60IZayPKr4aA" name="Requirement23"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_0UzwQJILEe60IZayPKr4aA" name="Requirement24"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_STqwsJIMEe60IZayPKr4aA" name="Requirement25"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_hoEH0JIMEe60IZayPKr4aA" name="Requirement26"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Fyim0JLaEe6c0Pk1SCeHDQ" name="Requirement21"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MyNusJLaEe6c0Pk1SCeHDQ" name="Requirement22"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_N81HsJLaEe6c0Pk1SCeHDQ" name="Requirement23"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PN8KQJLaEe6c0Pk1SCeHDQ" name="Requirement24"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QSFH0JLaEe6c0Pk1SCeHDQ" name="Requirement25"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ufaq8JLaEe6c0Pk1SCeHDQ" name="Requirement26"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VfV24JLaEe6c0Pk1SCeHDQ" name="Requirement27"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XGPjQJLaEe6c0Pk1SCeHDQ" name="Requirement28"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_YA6bwJLaEe6c0Pk1SCeHDQ" name="Requirement29"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ZNwpYJLaEe6c0Pk1SCeHDQ" name="Requirement30"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_aa6ZAJLaEe6c0Pk1SCeHDQ" name="Requirement31"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_bhXqwJLaEe6c0Pk1SCeHDQ" name="Requirement32"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_c6xtsJLaEe6c0Pk1SCeHDQ" name="Requirement33"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_d-GL4JLaEe6c0Pk1SCeHDQ" name="Requirement34"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_fFeDoJLaEe6c0Pk1SCeHDQ" name="Requirement35"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_lpfeEJHZEe60IZayPKr4aA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lpkWkJHZEe60IZayPKr4aA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.6/SysML#/"/>
@@ -82,18 +91,27 @@
       <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Requirements:Requirement xmi:id="_5AcEoJHZEe60IZayPKr4aA" base_NamedElement="_4_TcMJHZEe60IZayPKr4aA" id="0" base_Class="_4_TcMJHZEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_9VHFYJIGEe60IZayPKr4aA" base_NamedElement="_9VECEJIGEe60IZayPKr4aA" id="1" text="The system shall facilitate an infrastructure to provide a reliable communication between the vehicles and the system, enabling autonomous cars to share information about their current location, destination &amp; road conditions. " base_Class="_9VECEJIGEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_M8cmoJIHEe60IZayPKr4aA" base_NamedElement="_M8YVMJIHEe60IZayPKr4aA" id="2" text="The city will already have an appropriated infrastructure to facilitate the system, such as: &#xD;&#xA;Traffic lights, Sensors, such as: Cameras, Light sensors, Etc…, Infrastructure for wireless communication" base_Class="_M8YVMJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_ZvYtoJIHEe60IZayPKr4aA" base_NamedElement="_ZvWRYJIHEe60IZayPKr4aA" id="3" base_Class="_ZvWRYJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_djsFsJIHEe60IZayPKr4aA" base_NamedElement="_djq3kJIHEe60IZayPKr4aA" id="4" base_Class="_djq3kJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_kaN4oJIHEe60IZayPKr4aA" base_NamedElement="_kaNRkJIHEe60IZayPKr4aA" id="5" text="The system shall have security measures to protect itself from unauthorized access &amp; data breaches." base_Class="_kaNRkJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_nSDBYJIHEe60IZayPKr4aA" base_NamedElement="_nR_XAJIHEe60IZayPKr4aA" id="6" text="The system shall comply with the local data privacy compliance laws. " base_Class="_nR_XAJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_sG860JIHEe60IZayPKr4aA" base_NamedElement="_sG7FoJIHEe60IZayPKr4aA" id="7" text="The system shall be able to detect faults within itself and react accordingly. " base_Class="_sG7FoJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_6CMGoJIHEe60IZayPKr4aA" base_NamedElement="_6CGAAJIHEe60IZayPKr4aA" id="8" text="The system shall reduce the city's carbon footprint" base_Class="_6CGAAJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="__sLN8JIHEe60IZayPKr4aA" base_NamedElement="__sIxsJIHEe60IZayPKr4aA" id="9" text="The system should comply with the green initives set by the city, region, and the government." base_Class="__sIxsJIHEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_HTY28JIIEe60IZayPKr4aA" base_NamedElement="_HTVzoJIIEe60IZayPKr4aA" id="10" base_Class="_HTVzoJIIEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_0U2MgJILEe60IZayPKr4aA" base_NamedElement="_0UzwQJILEe60IZayPKr4aA" id="11" text="The system should conserve energy where possible" base_Class="_0UzwQJILEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_STsl4JIMEe60IZayPKr4aA" base_NamedElement="_STqwsJIMEe60IZayPKr4aA" id="12" base_Class="_STqwsJIMEe60IZayPKr4aA"/>
-  <Requirements:Requirement xmi:id="_hoF9AJIMEe60IZayPKr4aA" base_NamedElement="_hoEH0JIMEe60IZayPKr4aA" id="13" text="The system shall provide means of real-time feedback from citizens for notifying issues such as potholes, traffick problems, etc." base_Class="_hoEH0JIMEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_9VHFYJIGEe60IZayPKr4aA" base_NamedElement="_9VECEJIGEe60IZayPKr4aA" id="SC01" text="The system shall facilitate an infrastructure to provide a reliable communication between the vehicles and the system, enabling autonomous cars to share information about their current location, destination &amp; road conditions. " base_Class="_9VECEJIGEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_M8cmoJIHEe60IZayPKr4aA" base_NamedElement="_M8YVMJIHEe60IZayPKr4aA" id="SC02" text="The city will already have an appropriated infrastructure to facilitate the system, such as: &#xD;&#xA;Traffic lights, Sensors, such as: Cameras, Light sensors, Etc…, Infrastructure for wireless communication" base_Class="_M8YVMJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_kaN4oJIHEe60IZayPKr4aA" base_NamedElement="_kaNRkJIHEe60IZayPKr4aA" id="SC03" text="The system shall have security measures to protect itself from unauthorized access &amp; data breaches." base_Class="_kaNRkJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_nSDBYJIHEe60IZayPKr4aA" base_NamedElement="_nR_XAJIHEe60IZayPKr4aA" id="SC04" text="The system shall comply with the local data privacy compliance laws. " base_Class="_nR_XAJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_sG860JIHEe60IZayPKr4aA" base_NamedElement="_sG7FoJIHEe60IZayPKr4aA" id="SC05" text="The system shall be able to detect faults within itself and react accordingly. " base_Class="_sG7FoJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_6CMGoJIHEe60IZayPKr4aA" base_NamedElement="_6CGAAJIHEe60IZayPKr4aA" id="SC06" text="The system shall reduce the city's carbon footprint" base_Class="_6CGAAJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="__sLN8JIHEe60IZayPKr4aA" base_NamedElement="__sIxsJIHEe60IZayPKr4aA" id="SC07" text="The system should comply with the green initives set by the city, region, and the government." base_Class="__sIxsJIHEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_0U2MgJILEe60IZayPKr4aA" base_NamedElement="_0UzwQJILEe60IZayPKr4aA" id="SC08" text="The system should conserve energy where possible" base_Class="_0UzwQJILEe60IZayPKr4aA"/>
+  <Requirements:Requirement xmi:id="_FyrwwJLaEe6c0Pk1SCeHDQ" base_NamedElement="_Fyim0JLaEe6c0Pk1SCeHDQ" id="ID01" text="Every citizen shall have a valid and unique ID issued by the government. This issued ID may be added to an electronic form, restricting one per citizen. &#xD;&#xA;&#xD;&#xA;This electronic ID will have limited information visible to the user.  &#xD;&#xA;&#xD;&#xA; Every government issued ID must have the personal information of the citizen. This information can be for example: &#xD;&#xA;&#xD;&#xA;Biometric Photo. &#xD;&#xA;&#xD;&#xA;Date of birth. &#xD;&#xA;&#xD;&#xA;Nationality &#xD;&#xA;&#xD;&#xA;Etc... " base_Class="_Fyim0JLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_MyQK8JLaEe6c0Pk1SCeHDQ" base_NamedElement="_MyNusJLaEe6c0Pk1SCeHDQ" id="ID02" text="Each electronic ID shall be linked to the government citizen records. " base_Class="_MyNusJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_N84yEJLaEe6c0Pk1SCeHDQ" base_NamedElement="_N81HsJLaEe6c0Pk1SCeHDQ" id="ID03" text="Each citizen shall have an electronic ID to interact with the public transportation system. " base_Class="_N81HsJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_PN9_cJLaEe6c0Pk1SCeHDQ" base_NamedElement="_PN8KQJLaEe6c0Pk1SCeHDQ" id="ID04" text="Electronic IDs shall be able to integrate with third party services. " base_Class="_PN8KQJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_QSHkEJLaEe6c0Pk1SCeHDQ" base_NamedElement="_QSFH0JLaEe6c0Pk1SCeHDQ" id="ID05" text="Electronic IDs should have a physical form. " base_Class="_QSFH0JLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_UfdHMJLaEe6c0Pk1SCeHDQ" base_NamedElement="_Ufaq8JLaEe6c0Pk1SCeHDQ" id="PS01" text="The power system shall detect the presence of persons or/and cars to switch on streetlights when needed to provide appropriate illumination to the area according to the amount of traffic in the area. " base_Class="_Ufaq8JLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_VfYTIJLaEe6c0Pk1SCeHDQ" base_NamedElement="_VfV24JLaEe6c0Pk1SCeHDQ" id="PS02" text="The system shall be able to adjust the luminosity of the streetlights to an appropriate level. " base_Class="_VfV24JLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_XGRYcJLaEe6c0Pk1SCeHDQ" base_NamedElement="_XGPjQJLaEe6c0Pk1SCeHDQ" id="PS03" text="The system shall be able to provide a logging system and transmit this log to the specified server. This log shall have information regarding the energy consumption of the specific streetlight with the corresponding timestamp. " base_Class="_XGPjQJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_YA8Q8JLaEe6c0Pk1SCeHDQ" base_NamedElement="_YA6bwJLaEe6c0Pk1SCeHDQ" id="PS04" text="The system shall be able to recover in case of a failure, report or in a critical scenario, access a system “turn off” state. " base_Class="_YA6bwJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_ZNyekJLaEe6c0Pk1SCeHDQ" base_NamedElement="_ZNwpYJLaEe6c0Pk1SCeHDQ" id="PS05" text="The system shall redirect power to critical areas in case of general power failure. " base_Class="_ZNwpYJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_aa8OMJLaEe6c0Pk1SCeHDQ" base_NamedElement="_aa6ZAJLaEe6c0Pk1SCeHDQ" id="SS01" text="The system shall integrate different monitoring systems under one infrastructure. " base_Class="_aa6ZAJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_bhY44JLaEe6c0Pk1SCeHDQ" base_NamedElement="_bhXqwJLaEe6c0Pk1SCeHDQ" id="SS02" text="The system shall surveil busy areas. " base_Class="_bhXqwJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_c6zi4JLaEe6c0Pk1SCeHDQ" base_NamedElement="_c6xtsJLaEe6c0Pk1SCeHDQ" id="SS03" text="The system shall comply with privacy rights. " base_Class="_c6xtsJLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_d-IoIJLaEe6c0Pk1SCeHDQ" base_NamedElement="_d-GL4JLaEe6c0Pk1SCeHDQ" id="SS04" text="The system should detect natural disasters and consequently alert citizens in the area and report to emergency systems. " base_Class="_d-GL4JLaEe6c0Pk1SCeHDQ"/>
+  <Requirements:Requirement xmi:id="_fFf40JLaEe6c0Pk1SCeHDQ" base_NamedElement="_fFeDoJLaEe6c0Pk1SCeHDQ" id="SS05" text="The system should make use of available resources to aid police by looking for wanted criminals. " base_Class="_fFeDoJLaEe6c0Pk1SCeHDQ"/>
 </xmi:XMI>
