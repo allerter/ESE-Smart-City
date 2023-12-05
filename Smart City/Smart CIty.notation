@@ -1123,4 +1123,12 @@
       <styles xmi:type="nattablestyle:IntValueStyle" xmi:id="_-1v1sZHaEe60IZayPKr4aA" name="rowLabelWidth" intValue="160"/>
     </localRowHeaderAxisConfiguration>
   </nattable:Table>
+  <notation:Diagram xmi:id="_oHIYgJN2Ee64w8tp_LyiVQ" type="PapyrusUMLClassDiagram" name="ContextDiagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_oHIYgZN2Ee64w8tp_LyiVQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_oHIYgpN2Ee64w8tp_LyiVQ"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_oHIYg5N2Ee64w8tp_LyiVQ" diagramKindId="org.eclipse.papyrus.sysml16.diagram.blockdefinition">
+      <owner xmi:type="uml:Model" href="Smart%20CIty.uml#_lnFDQJHZEe60IZayPKr4aA"/>
+    </styles>
+    <element xmi:type="uml:Model" href="Smart%20CIty.uml#_lnFDQJHZEe60IZayPKr4aA"/>
+  </notation:Diagram>
 </xmi:XMI>
