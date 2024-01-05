@@ -10,6 +10,19 @@ struct Task {
     void (*taskFunction)();  //Function that should be executed in the task
 };
 
+//Struct for a message
+struct Message {
+  byte receiver;
+  String message;
+  byte tx_attempts;
+};
+
+//Struct for EndNodes
+struct EndNode {
+  byte i2c_adress;
+  char location;
+};
+
 //Function prototypes
 void task1_communication();
 void task2_logic();
@@ -25,11 +38,57 @@ Task taskSet[] = {
 };
 const byte numTasks = sizeof(taskSet) / sizeof(taskSet[0]);
 
+//Definition of EndNodes with i2c address and location
+EndNode endNodes[] = {
+  {1, 'n'},
+  {2, 's'},
+  {3, 'w'},
+  {4, 'e'}
+};
+const byte numEndNodes = sizeof(endNodes) / sizeof(endNodes[0]);
+
 //--------------------Implementation of the task functions--------------------
 
 //Task 1: used for communication between the TrafficManager and the EndNodes
+
+#define TX_BUFF_SIZE 16
+#define RX_BUFF_SIZE 8
+#define MAX_NUM_OF_TX_ATTEMPTS 2
+Message tx_buff[TX_BUFF_SIZE];
+Message rx_buff[RX_BUFF_SIZE];
+
 void task1_communication()
 {
+  //Send messages to EndNodes that are stored in an array
+  for(short i = 0; i <= (TX_BUFF_SIZE - 1); i++)
+  {
+    //Continue if message in array contains no content
+    if(tx_buff[i].receiver == 0 && tx_buff[i].message == "")
+    {
+      continue;
+    }
+    
+    //Starting transmission to EndNode specified in the message
+    Wire.beginTransmission(tx_buff[i].receiver);
+
+    //Writing the message to the buffer
+    Wire.write(tx_buff[i].message.c_str());
+    
+    //Beginning real transmission and checking if successfully transmitted. If not successfully, and number of retransmissions below threshold keep in buffer and increment number of attempts
+    if(Wire.endTransmission(true) != 0 && tx_buff[i].tx_attempts < MAX_NUM_OF_TX_ATTEMPTS)
+    {
+      tx_buff[i].tx_attempts++;
+      continue;
+    }
+
+    //Clearing the message because it was sent successfully or exceeded number of allowed attempts
+    tx_buff[i].receiver = 0;
+    tx_buff[i].message = "";
+    tx_buff[i].tx_attempts = 0;
+  }
+  
+  ///ToDo: Poll for the PIRsensors of all EndNodes
+  
   Serial.println("Task 1: Comms");
 }
 
@@ -54,8 +113,9 @@ void setup()
   //Setting up serial communication with 115200 baud
   Serial.begin(115200);
 
-  //Setting up i2c communication as a master
+  //Setting up i2c communication as a master with timeout of 1ms and no reset when timeout occurs
   Wire.begin();
+  Wire.setWireTimeout(1000, false);
 }
 
 void loop()
