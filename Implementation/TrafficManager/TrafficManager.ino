@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Wire.h>
 
 //Struct for a task
 struct Task {
@@ -24,27 +25,43 @@ Task taskSet[] = {
 };
 const byte numTasks = sizeof(taskSet) / sizeof(taskSet[0]);
 
-//Implementation of the tasks
-void task1_communication() {
-    Serial.println("Task 1: Comms");
+//--------------------Implementation of the task functions--------------------
+
+//Task 1: used for communication between the TrafficManager and the EndNodes
+void task1_communication()
+{
+  Serial.println("Task 1: Comms");
 }
 
-void task2_logic() {
-    Serial.println("Task 2: Logic");
+//Task 2: used for implementing a state machine for the traffic light logic
+void task2_logic()
+{
+  Serial.println("Task 2: Logic");
 }
 
-void task3_status() {
-  digitalWrite(13, !digitalRead(13));
+//Task 3: used for printing the system's status
+void task3_status()
+{
+  digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
   Serial.println("Task 3: Status");
 }
 
-void setup() {
-    pinMode(13, OUTPUT);
-    Serial.begin(115200);
+void setup()
+{
+  //Setting the pin of the built in LED to be an output
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  //Setting up serial communication with 115200 baud
+  Serial.begin(115200);
+
+  //Setting up i2c communication as a master
+  Wire.begin();
 }
 
-void loop() {
-    runRMS(taskSet, numTasks);
+void loop()
+{
+  //Calling the scheduler with the task set
+  runRMS(taskSet, numTasks);
 }
 
 //--------------------RMS-Functions--------------------
