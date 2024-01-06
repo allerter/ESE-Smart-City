@@ -19,7 +19,7 @@ struct Message {
 
 //Struct for EndNodes
 struct EndNode {
-  byte i2c_adress;
+  byte i2c_address;
   char location;
 };
 
@@ -27,6 +27,8 @@ struct EndNode {
 void task1_communication();
 void task2_logic();
 void task3_status();
+
+bool addPacketTX(EndNode nodes[], byte numNodes, char location, String message);
 void executeTask(Task* task);
 void runRMS(Task tasks[], byte num_of_tasks);
 
@@ -75,7 +77,7 @@ void task1_communication()
     Wire.write(tx_buff[i].message.c_str());
     
     //Beginning real transmission and checking if successfully transmitted. If not successfully, and number of retransmissions below threshold keep in buffer and increment number of attempts
-    if(Wire.endTransmission(true) != 0 && tx_buff[i].tx_attempts < MAX_NUM_OF_TX_ATTEMPTS)
+    if(Wire.endTransmission(true) != 0 && tx_buff[i].tx_attempts <= MAX_NUM_OF_TX_ATTEMPTS)
     {
       tx_buff[i].tx_attempts++;
       continue;
@@ -96,6 +98,11 @@ void task1_communication()
 void task2_logic()
 {
   Serial.println("Task 2: Logic");
+  if(!addPacketTX(endNodes, numEndNodes, 'n', "10"))
+  {
+    Serial.println("TX msg queueing error!");
+  }
+  
 }
 
 //Task 3: used for printing the system's status
@@ -123,6 +130,47 @@ void loop()
   //Calling the scheduler with the task set
   runRMS(taskSet, numTasks);
 }
+
+
+//Function to add message into the TX buffer. Returns true if successfull and false if buffer was full
+bool addPacketTX(EndNode nodes[], byte numNodes, char location, String message)
+{
+  EndNode* destNode;
+  for(short i = 0; i <= (numNodes - 1); i++)
+  {
+    if(nodes[i].location == location)
+    {
+      destNode = &nodes[i];
+      break;
+    }
+  }
+
+  //If no node was found return false
+  if(destNode == nullptr)
+  {
+    return false;
+  }
+  
+  //Put message
+  for(short i = 0; i <= (TX_BUFF_SIZE - 1); i++)
+  {
+    //Continue if message in array contains content
+    if(tx_buff[i].receiver != 0 || tx_buff[i].message != "")
+    {
+      continue;
+    }
+
+    //Clearing the message because it was sent successfully or exceeded number of allowed attempts
+    tx_buff[i].receiver = destNode->i2c_address;
+    tx_buff[i].message = message;
+
+    return true;
+  }
+
+  return false;
+}
+
+
 
 //--------------------RMS-Functions--------------------
 
