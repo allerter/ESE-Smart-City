@@ -32,7 +32,7 @@ void task3_status();
 
 //Helping functions
 bool addPacketTX(char location, String message);
-void addErrorMsg(String errorMsg);
+bool addErrorMsg(String errorMsg);
 
 //RMS related functions
 void executeTask(Task* task);
@@ -91,18 +91,27 @@ void task1_communication()
     
     //Beginning real transmission and checking if successfully transmitted. If not successfully, and number of retransmissions below threshold keep in buffer and increment number of attempts
     byte result = Wire.endTransmission();
-    
+
+    //Handle i2c TX error
     if(result != 0)
     {
-      Serial.println("i2c Error: " + String(result) + " with add " + String(tx_buff[i].receiver));
+      //Adding error msg
+      addErrorMsg("i2c Error: " + String(result) + " with slave " + String(tx_buff[i].receiver));
+
+      //Incrementing number of attempts
       tx_buff[i].tx_attempts++;
+
+      //Checking if number of allowed attempts are exceeded and continuing if not
       if(tx_buff[i].tx_attempts < MAX_NUM_OF_TX_ATTEMPTS)
       {
         continue; 
       }
+      else
+      {
+        addErrorMsg("Exceeded allowed attempts! Message deleted.");
+      }
     }
-
-    Serial.println("i2c success with add: " + String(tx_buff[i].receiver));
+    
     //Clearing the message because it was sent successfully or exceeded number of allowed attempts
     tx_buff[i].receiver = 0;
     tx_buff[i].message = "";
@@ -149,15 +158,28 @@ void task2_logic()
 //Task 3: used for printing the system's status
 
 //Defines for task 3
-/* --empty-- */
+#define ERROR_MSG_BUFFER_SIZE 8
 
 //Global vars for task 3
-/* --empty-- */
+String error_msg_buff[ERROR_MSG_BUFFER_SIZE];
 
 void task3_status()
 {
+  //Iterating over the msg buffer
+  for(byte i = 0; i < ERROR_MSG_BUFFER_SIZE; i++)
+  {
+    //Exiting if buffer is empty
+    if(error_msg_buff[i] == "")
+    {
+      break;
+    }
+
+    //Printing and clearing msg buffer
+    Serial.println(error_msg_buff[i]);
+    error_msg_buff[i] = "";
+  }
+  
   digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-  Serial.println("Task 3: Status");
 }
 
 
@@ -183,7 +205,7 @@ void loop()
 
 //--------------------Helping functions--------------------
 
-//Function to add message into the TX buffer. Returns true if successfull and false if buffer was full
+//Function to add message into the TX buffer. Returns true if successful or false if buffer was full
 bool addPacketTX(char location, String message)
 {
   short indexOfdestNode = -1;
@@ -203,7 +225,7 @@ bool addPacketTX(char location, String message)
   }
   
   //Iterating over the buffer
-  for(short i = 0; i < TX_BUFF_SIZE; i++)
+  for(byte i = 0; i < TX_BUFF_SIZE; i++)
   {
     //Continue if message in array contains content
     if(tx_buff[i].receiver != 0 || tx_buff[i].message != "")
@@ -223,6 +245,27 @@ bool addPacketTX(char location, String message)
   return false;
 }
 
+
+//Function to add a message to the buffer. Returns true if successful or false if buffer was full
+bool addErrorMsg(String errorMsg)
+{
+  //Iterating over the msg buffer
+  for(byte i = 0; i < ERROR_MSG_BUFFER_SIZE; i++)
+  {
+    //Continue if memory is not empty
+    if(error_msg_buff[i] != "")
+    {
+      continue;
+    }
+
+    //Otherwise put msg into buffer and return true
+    error_msg_buff[i] = errorMsg;
+    return true;
+  }
+
+  //Return false if buffer was full
+  return false;
+}
 
 
 //--------------------RMS-Functions--------------------
