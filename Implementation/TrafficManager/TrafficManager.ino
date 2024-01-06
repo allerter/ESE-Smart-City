@@ -24,7 +24,9 @@ struct EndNode {
   char location;
 };
 
+
 //--------------------Function prototypes--------------------
+
 //Tasks
 void task1_communication();
 void task2_logic();
@@ -58,6 +60,7 @@ EndNode endNodes[] = {
   {23, 'e'}
 };
 const byte numEndNodes = sizeof(endNodes) / sizeof(endNodes[0]);
+
 
 //--------------------Implementation of the task functions--------------------
 
@@ -121,6 +124,7 @@ void task1_communication()
   ///ToDo: Poll for the PIRsensors of all EndNodes
 }
 
+
 //Task 2: used for implementing a state machine for the traffic light logic
 
 //Defines for task 2
@@ -155,10 +159,11 @@ void task2_logic()
   }
 }
 
+
 //Task 3: used for printing the system's status
 
 //Defines for task 3
-#define ERROR_MSG_BUFFER_SIZE 8
+#define ERROR_MSG_BUFFER_SIZE 16
 
 //Global vars for task 3
 String error_msg_buff[ERROR_MSG_BUFFER_SIZE];
