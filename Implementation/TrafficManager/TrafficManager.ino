@@ -160,31 +160,171 @@ void task1_communication()
 /* --empty-- */
 
 //Global vars for task 2
-/* --empty-- */
+byte time_cntr = 0;
+byte state = 0;
 
 void task2_logic()
 {
-  //Sending test packets
-  
-  Serial.println("Task 2: Logic");
-  if(!addPacketTX('n', "Hello n from TrafficManager"))
-  {
-    Serial.println("TX msg queueing error n!");
-  }
+  //Incrementing timebase
+  time_cntr = time_cntr + 1;
 
-  if(!addPacketTX('s', "Hello s from TrafficManager"))
+  switch(state)
   {
-    Serial.println("TX msg queueing error s!");
-  }
+    //Initial state
+    case 0:
+      state = 1;
+      time_cntr = 0;
+    break;
 
-  if(!addPacketTX('w', "Hello w from TrafficManager"))
-  {
-    Serial.println("TX msg queueing error w!");
-  }
+    //State with every light off
+    //Used for starting and yellow blinking
+    case 1:
+      addPacketTX('n', "off");
+      addPacketTX('s', "off");
+      addPacketTX('e', "off");
+      addPacketTX('w', "off");
 
-  if(!addPacketTX('e', "Hello e from TrafficManager"))
-  {
-    Serial.println("TX msg queueing error w!");
+      state = 2;
+    break;
+
+    //State with every yellow light on.
+    //Used for yellow blinking and transition to all directions red
+    case 2:
+      if(time_cntr <= 6)
+      {
+        addPacketTX('n', "y");
+        addPacketTX('s', "y");
+        addPacketTX('e', "y");
+        addPacketTX('w', "y");
+      }
+      
+      if(time_cntr < 6)
+      {
+        state = 1;
+      }
+      else if(time_cntr >= 8)
+      {
+        state = 3;
+        time_cntr = 0;
+      }
+    break;
+
+    //State for every direction blocked
+    case 3:
+      if(time_cntr == 1)
+      {
+        addPacketTX('n', "r");
+        addPacketTX('s', "r");
+        addPacketTX('e', "r");
+        addPacketTX('w', "r"); 
+      }
+      else if(time_cntr >= 3)
+      {
+        state = 4;
+        time_cntr = 0;
+      }
+    break;
+
+    //State for showing red-yellow in direction north-south
+    case 4:
+      if(time_cntr == 1)
+      {
+        addPacketTX('n', "r_y");
+        addPacketTX('s', "r_y");
+      }
+      else if(time_cntr >= 1)
+      {
+        state = 5;
+        time_cntr = 0;
+      }
+    break;
+
+    //State for showing green in direction north-south
+    case 5:
+      if(time_cntr == 1)
+      {
+        addPacketTX('n', "g");
+        addPacketTX('s', "g");
+      }
+      else if(time_cntr >= 15)
+      {
+        state = 6;
+        time_cntr = 0;
+      }
+    break;
+
+    //State for showing yellow in direction north-south
+    case 6:
+      if(time_cntr == 1)
+      {
+        addPacketTX('n', "y");
+        addPacketTX('s', "y");
+      }
+      else if(time_cntr >= 2)
+      {
+        state = 7;
+        time_cntr = 0; 
+      }
+    break;
+
+    //State for showing red in direction north-south
+    case 7:
+      if(time_cntr == 1)
+      {
+        addPacketTX('n', "r");
+        addPacketTX('s', "r");
+      }
+      else if(time_cntr >= 2)
+      {
+        state = 8;
+        time_cntr = 0; 
+      }
+    break;
+
+    //State for showing red-yellow in direction west-east
+    case 8:
+      if(time_cntr == 1)
+      {
+        addPacketTX('w', "r_y");
+        addPacketTX('e', "r_y");
+      }
+      else if(time_cntr >= 1)
+      {
+        state = 9;
+        time_cntr = 0; 
+      }
+    break;
+
+    //State for showing green in direction west-east
+    case 9:
+      if(time_cntr == 1)
+      {
+        addPacketTX('w', "g");
+        addPacketTX('e', "g");
+      }
+      else if(time_cntr >= 15)
+      {
+        state = 10;
+        time_cntr = 0; 
+      }
+    break;
+
+    //State for showing yellow in direction west-east
+    case 10:
+      if(time_cntr == 1)
+      {
+        addPacketTX('w', "y");
+        addPacketTX('e', "y");
+      }
+      else if(time_cntr >= 2)
+      {
+        state = 3;
+        time_cntr = 0; 
+      }
+    break;
+    
+    default:
+    break;
   }
 }
 
