@@ -22,6 +22,7 @@ struct Message {
 struct EndNode {
   byte i2c_address;
   char location;
+  bool emergencyApproaching;
 };
 
 
@@ -54,10 +55,10 @@ const byte numTasks = sizeof(taskSet) / sizeof(taskSet[0]);
 
 //Definition of EndNodes with i2c address and location
 EndNode endNodes[] = {
-  {20, 'n'},
-  {21, 's'},
-  {22, 'w'},
-  {23, 'e'}
+  {20, 'n', false},
+  {21, 's', false},
+  {22, 'w', false},
+  {23, 'e', false}
 };
 const byte numEndNodes = sizeof(endNodes) / sizeof(endNodes[0]);
 
@@ -121,7 +122,35 @@ void task1_communication()
     tx_buff[i].tx_attempts = 0;
   }
   
-  ///ToDo: Poll for the PIRsensors of all EndNodes
+  //Polling if there are emergency vehicles apporaching
+  for(byte i = 0; i < numEndNodes; i++)
+  {
+    byte result_size = Wire.requestFrom((int)endNodes[i].i2c_address, 1);
+    
+    //If something went wrong
+    if(result_size != 1 || Wire.available() != 1)
+    {
+      addErrorMsg("Polling error with slave " + String(endNodes[i].i2c_address));
+      continue;
+    }
+
+    //Read in char
+    char rx = Wire.read();
+    
+    //Write result to end node
+    if(rx == '0')
+    {
+      endNodes[i].emergencyApproaching = false;
+    }
+    else if(rx == '1')
+    {
+      endNodes[i].emergencyApproaching = true;
+    }
+    else
+    {
+      addErrorMsg("Result of polling slave " + String(endNodes[i].i2c_address) + " returned forbidden value");
+    }
+  }
 }
 
 
