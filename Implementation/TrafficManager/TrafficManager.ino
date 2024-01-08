@@ -68,7 +68,7 @@ const byte numEndNodes = sizeof(endNodes) / sizeof(endNodes[0]);
 //Task 1: used for communication between the TrafficManager and the EndNodes
 
 //Defines for task 1
-#define TX_BUFF_SIZE 8
+#define TX_BUFF_SIZE 16
 #define RX_BUFF_SIZE 8
 #define MAX_NUM_OF_TX_ATTEMPTS 2
 
@@ -138,13 +138,13 @@ void task1_communication()
     char rx = Wire.read();
     
     //Write result to end node
-    if(rx == '0')
-    {
-      endNodes[i].emergencyApproaching = false;
-    }
-    else if(rx == '1')
+    if(rx == '1')
     {
       endNodes[i].emergencyApproaching = true;
+    }
+    else if(rx == '0')
+    {
+      
     }
     else
     {
@@ -162,12 +162,57 @@ void task1_communication()
 //Global vars for task 2
 byte time_cntr = 0;
 byte state = 0;
+char emergencyNorthSouth = ' ';
+char emergencyEastWest = ' ';
 
 void task2_logic()
 {
   //Incrementing timebase
   time_cntr = time_cntr + 1;
 
+  //Checking emergency vehicles
+  for(byte i = 0; i < numEndNodes; i++)
+  {
+    if(!endNodes[i].emergencyApproaching)
+    {
+      continue;
+    }
+    
+    if(endNodes[i].location == 'n' || endNodes[i].location == 's')
+    {
+      if(emergencyNorthSouth == ' ')
+      {
+          emergencyNorthSouth = endNodes[i].location;
+          Serial.println("Set emergencyNS to: " + String(emergencyNorthSouth));
+      }
+      else
+      {
+        if(emergencyNorthSouth != endNodes[i].location)
+        {
+          emergencyNorthSouth = ' ';
+          Serial.println("Reset emergencyNS by: " + String(endNodes[i].location));
+        }
+      }
+    }
+    else if (endNodes[i].location == 'e' || endNodes[i].location == 'w')
+    {
+      if(emergencyEastWest == ' ')
+      {
+          emergencyEastWest = endNodes[i].location;
+          Serial.println("Set emergencyEW to: " + String(emergencyEastWest));
+      }
+      else
+      {
+        if(emergencyEastWest != endNodes[i].location)
+        {
+          emergencyEastWest = ' ';
+          Serial.println("Reset emergencyEW by: " + String(endNodes[i].location));
+        }
+      }
+    }
+    endNodes[i].emergencyApproaching = false;
+  }
+  
   switch(state)
   {
     //Initial state
@@ -246,7 +291,7 @@ void task2_logic()
         addPacketTX('n', "g");
         addPacketTX('s', "g");
       }
-      else if(time_cntr >= 15)
+      else if(time_cntr >= 15 && emergencyNorthSouth == ' ')
       {
         state = 6;
         time_cntr = 0;
@@ -302,7 +347,7 @@ void task2_logic()
         addPacketTX('w', "g");
         addPacketTX('e', "g");
       }
-      else if(time_cntr >= 15)
+      else if(time_cntr >= 15 && emergencyEastWest == ' ')
       {
         state = 10;
         time_cntr = 0; 

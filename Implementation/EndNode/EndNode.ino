@@ -6,6 +6,7 @@ int recivedSignal = 0;
 int redPin = 13;
 int yellowPin = 8;
 int greenPin = 5;
+int pirPin = 3;
 bool isEmergencyRecieved = false;
 
 #define STRING_BUFF_SIZE 10
@@ -60,7 +61,7 @@ void receiveEvent(int bytes) {
 }
 
 void sendEmergencySignalValue(){
-  Wire.write(String(isEmergencyRecieved).c_str());
+  Wire.write(String(digitalRead(pirPin)).c_str());
 }
 
 void setup() {
@@ -70,6 +71,7 @@ void setup() {
   pinMode(yellowPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
 
+  pinMode(pirPin, INPUT);
   
   Wire.begin(SLAVE_ADDRESS); 
   Wire.onReceive(receiveEvent);
