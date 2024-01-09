@@ -291,10 +291,11 @@ void task2_logic()
         addPacketTX('n', "g");
         addPacketTX('s', "g");
       }
-      else if(time_cntr >= 15 && emergencyNorthSouth == ' ')
+
+      if((time_cntr >= 15 && emergencyNorthSouth == ' ') || emergencyEastWest != ' ')
       {
-        state = 6;
-        time_cntr = 0;
+          state = 6;
+          time_cntr = 0;
       }
     break;
 
@@ -347,7 +348,7 @@ void task2_logic()
         addPacketTX('w', "g");
         addPacketTX('e', "g");
       }
-      else if(time_cntr >= 15 && emergencyEastWest == ' ')
+      else if((time_cntr >= 15 && emergencyEastWest == ' ') || emergencyNorthSouth != ' ')
       {
         state = 10;
         time_cntr = 0; 
