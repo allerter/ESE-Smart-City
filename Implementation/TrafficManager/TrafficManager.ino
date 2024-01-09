@@ -23,6 +23,7 @@ struct EndNode {
   byte i2c_address;
   char location;
   bool emergencyApproaching;
+  bool citizenApproachting;
 };
 
 
@@ -144,7 +145,7 @@ void task1_communication()
     }
     else if(rx == '0')
     {
-      
+      endNodes[i].emergencyApproaching = false;
     }
     else
     {
