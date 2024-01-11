@@ -262,7 +262,7 @@ void task2_logic()
         addPacketTX('n', "r");
         addPacketTX('s', "r");
         addPacketTX('e', "r");
-        addPacketTX('w', "r"); 
+        addPacketTX('w', "r");
       }
       else if(time_cntr >= 3)
       {
@@ -278,11 +278,9 @@ void task2_logic()
         addPacketTX('n', "r_y");
         addPacketTX('s', "r_y");
       }
-      else if(time_cntr >= 1)
-      {
-        state = 5;
-        time_cntr = 0;
-      }
+      
+      state = 5;
+      time_cntr = 0;
     break;
 
     //State for showing green in direction north-south
@@ -306,8 +304,9 @@ void task2_logic()
       {
         addPacketTX('n', "y");
         addPacketTX('s', "y");
+        
       }
-      else if(time_cntr >= 2)
+      else if(time_cntr >= 3)
       {
         state = 7;
         time_cntr = 0; 
@@ -321,7 +320,7 @@ void task2_logic()
         addPacketTX('n', "r");
         addPacketTX('s', "r");
       }
-      else if(time_cntr >= 2)
+      else if(time_cntr >= 3)
       {
         state = 8;
         time_cntr = 0; 
@@ -335,11 +334,9 @@ void task2_logic()
         addPacketTX('w', "r_y");
         addPacketTX('e', "r_y");
       }
-      else if(time_cntr >= 1)
-      {
-        state = 9;
-        time_cntr = 0; 
-      }
+      
+      state = 9;
+      time_cntr = 0;
     break;
 
     //State for showing green in direction west-east
@@ -363,7 +360,7 @@ void task2_logic()
         addPacketTX('w', "y");
         addPacketTX('e', "y");
       }
-      else if(time_cntr >= 2)
+      else if(time_cntr >= 3)
       {
         state = 3;
         time_cntr = 0; 
