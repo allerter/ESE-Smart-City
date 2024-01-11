@@ -23,7 +23,7 @@ struct EndNode {
   byte i2c_address;
   char location;
   bool emergencyApproaching;
-  bool citizenApproachting;
+  bool citizenDetected;
 };
 
 
@@ -33,6 +33,7 @@ struct EndNode {
 void task1_communication();
 void task2_logic();
 void task3_status();
+void task4_lights();
 
 //Helping functions
 bool addPacketTX(char location, String message);
@@ -50,7 +51,8 @@ void runRMS(Task tasks[], byte num_of_tasks);
 Task taskSet[] = {
     {1, 100, 0, 0, task1_communication},
     {2, 1000, 0, 0, task2_logic},
-    {3, 2000, 0, 0, task3_status}
+    {3, 2000, 0, 0, task3_status},
+    {4, 1000, 0, 0, task4_lights},
 };
 const byte numTasks = sizeof(taskSet) / sizeof(taskSet[0]);
 
@@ -126,26 +128,43 @@ void task1_communication()
   //Polling if there are emergency vehicles apporaching
   for(byte i = 0; i < numEndNodes; i++)
   {
-    byte result_size = Wire.requestFrom((int)endNodes[i].i2c_address, 1);
+    byte result_size = Wire.requestFrom((int)endNodes[i].i2c_address, 2);
     
     //If something went wrong
-    if(result_size != 1 || Wire.available() != 1)
+    if(result_size != 2 || Wire.available() != 2)
     {
       addErrorMsg("Polling error with slave " + String(endNodes[i].i2c_address));
       continue;
     }
 
-    //Read in char
-    char rx = Wire.read();
+    //Read in first char
+    char emergencySignal = Wire.read();
+
+    //Read in second char
+    char lightsSignal = Wire.read();
     
     //Write result to end node
-    if(rx == '1')
+    if(emergencySignal == '1')
     {
       endNodes[i].emergencyApproaching = true;
     }
-    else if(rx == '0')
+    else if(emergencySignal == '0')
     {
       endNodes[i].emergencyApproaching = false;
+    }
+    else
+    {
+      addErrorMsg("Result of polling slave " + String(endNodes[i].i2c_address) + " returned forbidden value");
+    }
+
+    //Write result to end node
+    if(lightsSignal == '1')
+    {
+      endNodes[i].citizenDetected = true;
+    }
+    else if(lightsSignal == '0')
+    {
+      endNodes[i].citizenDetected = false;
     }
     else
     {
@@ -400,6 +419,82 @@ void task3_status()
   digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 }
 
+//Task 4: used for controlling the street lights
+
+//Defines for task 4
+/* --empty-- */
+
+//Global vars for task 4
+byte lightTimers[numEndNodes];
+
+void task4_lights()
+{
+  //Decrementing timers
+  for(byte i = 0; i < numEndNodes; i++)
+  {
+    if(lightTimers[i] >= 1)
+    {
+      lightTimers[i]--;
+
+      //If timer is now zero, send commands to turn on
+      if(lightTimers[i] == 0)
+      {
+        switch(i)
+        {
+          case 0:
+            addPacketTX('n', "loff");
+          break;
+  
+          case 1:
+            addPacketTX('s', "loff");
+          break;
+  
+          case 2:
+            addPacketTX('e', "loff");
+          break;
+  
+          case 3:
+            addPacketTX('w', "loff");
+          break;
+  
+          default:
+          break;
+        }
+      }
+    }
+  }
+  
+  //Iterating over the nodes to set on lights
+  for(byte i = 0; i < numEndNodes; i++)
+  {
+    if(!endNodes[i].citizenDetected)
+    {
+      continue;
+    }
+
+    //Turn on the light in the opposite direction and set timer
+    if(endNodes[i].location == 'n')
+    {
+      addPacketTX('s', "lon");
+      lightTimers[1] = 15;
+    }
+    else if(endNodes[i].location == 's')
+    {
+      addPacketTX('n', "lon");
+      lightTimers[0] = 15;
+    }
+    else if(endNodes[i].location == 'e')
+    {
+      addPacketTX('w', "lon");
+      lightTimers[2] = 15;
+    }
+    else if(endNodes[i].location == 'w')
+    {
+      addPacketTX('e', "lon");
+      lightTimers[3] = 15;
+    }
+  }
+}
 
 //--------------------Setup and endless loop--------------------
 void setup()

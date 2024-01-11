@@ -1,15 +1,17 @@
 #include <Wire.h>
 
-#define SLAVE_ADDRESS 23
+#define SLAVE_ADDRESS 20
+#define STRING_BUFF_SIZE 10
 
 int recivedSignal = 0;
 int redPin = 13;
 int yellowPin = 8;
 int greenPin = 5;
 int pirPin = 3;
-bool isEmergencyRecieved = false;
+int buttonPin = 4;
+int lightsPin = 2;
 
-#define STRING_BUFF_SIZE 10
+
 void receiveEvent(int bytes) {
   char receivedChars[STRING_BUFF_SIZE];
   byte stringIndex = 0;
@@ -58,10 +60,24 @@ void receiveEvent(int bytes) {
     digitalWrite(yellowPin, HIGH);
     digitalWrite(greenPin, LOW);
   }
+  else if(msg == "lon") // Lights ON
+  {
+    digitalWrite(lightsPin, HIGH);
+  }
+  else if(msg == "loff") // Lights OFF
+  {
+    digitalWrite(lightsPin, LOW);
+  }
+
 }
 
 void sendEmergencySignalValue(){
-  Wire.write(String(digitalRead(pirPin)).c_str());
+  // for emergencySignal, 0 means Flase and 1 means True
+  const char* emergencySignalChar = digitalRead(buttonPin) ? "1" : "0";
+  // for turnLightsOnSignal, 2 means False and 3 means True
+  const char* lightsSignalChar = digitalRead(pirPin) ? "1": "0";
+  Wire.write(emergencySignalChar);
+  Wire.write(lightsSignalChar);
 }
 
 void setup() {
@@ -70,8 +86,12 @@ void setup() {
   pinMode(redPin, OUTPUT);
   pinMode(yellowPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
+  pinMode(lightsPin, OUTPUT);
 
   pinMode(pirPin, INPUT);
+  pinMode(buttonPin, INPUT);
+
+  pinMode(LED_BUILTIN, OUTPUT);
   
   Wire.begin(SLAVE_ADDRESS); 
   Wire.onReceive(receiveEvent);
