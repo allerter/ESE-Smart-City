@@ -76,7 +76,6 @@ void testLightsOnMessage(){
 
 void testLightsOffMessage(){
   std::cout << "Running testLightsOffMessage: ";
-  fflush(stdout);
   std::string msg = "loff";
   Light l = {false, false, false, true};
   receiveEvent(msg, l);
@@ -84,6 +83,24 @@ void testLightsOffMessage(){
   assert(l.yellowLight == false);
   assert(l.greenLight == false);
   assert(l.streetLights == false);
+  std::cout << "PASSED\n";
+}
+
+void testInvalidValue(){
+  std::cout << "Running testInvalidValue: ";
+  std::string msg = "random";
+  Light l = {false, false, false, true};
+  try{
+    receiveEvent(msg, l);
+    throw std::runtime_error("Exception should've been raised");
+
+  } catch(const std::exception& e){
+    // all good
+  }
+  assert(l.redLight == false);
+  assert(l.yellowLight == false);
+  assert(l.greenLight == false);
+  assert(l.streetLights == true);
   std::cout << "PASSED\n";
 }
 
@@ -95,5 +112,6 @@ int main(){
   testYellowRedMessage();
   testLightsOnMessage();
   testLightsOffMessage();
+  testInvalidValue();
   return 0;
 }
