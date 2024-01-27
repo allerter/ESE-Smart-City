@@ -71,10 +71,8 @@ void receiveEvent(int bytes) {
 
 }
 
-void sendEmergencySignalValue(){
-  // for emergencySignal, 0 means Flase and 1 means True
+void sendRequestedSignals(){
   const char* emergencySignalChar = digitalRead(buttonPin) ? "1" : "0";
-  // for turnLightsOnSignal, 2 means False and 3 means True
   const char* lightsSignalChar = digitalRead(pirPin) ? "1": "0";
   Wire.write(emergencySignalChar);
   Wire.write(lightsSignalChar);
@@ -95,7 +93,7 @@ void setup() {
   
   Wire.begin(SLAVE_ADDRESS); 
   Wire.onReceive(receiveEvent);
-  Wire.onRequest(sendEmergencySignalValue);
+  Wire.onRequest(sendRequestedSignals);
 }
 
 
